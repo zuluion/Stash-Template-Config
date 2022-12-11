@@ -63,7 +63,7 @@
       proxy-providers-config:
         proxy-providers-common:
           airport-interval: &airport-interval 36000
-          url-airport: &url-airport "http://sub.store/download/CNIX" # 这里填入机场链接
+          url-airport: &url-airport "http://sub.store/download/这里修改成自己的机场链接或者将这里的汉字修改成本地Sub-Store的订阅名称" # 这里填入机场链接
           proxy-file-path-AirPort: &proxy-file-path-AirPort myprovider/proxies/provider-airport.yml
         proxy-providers-filter:
           proxy-filter-HK: &proxy-filter-HK '港'
