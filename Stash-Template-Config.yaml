@@ -218,6 +218,7 @@
         icon-Argentina: &icon-Argentina https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Argentina.png
         icon-Philippines: &icon-Philippines https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Philippines.png
         icon-Malaysia: &icon-Malaysia https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Malaysia.png
+        icon-Bot: &icon-Bot https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Bot.png
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
@@ -268,6 +269,12 @@
       -
         name: 📘Facebook
         icon: *icon-Facebook
+        type: select
+        proxies:
+          *proxies-all
+      -
+        name: 🤖OpenAI
+        icon: *icon-Bot
         type: select
         proxies:
           *proxies-all
@@ -564,6 +571,7 @@
       - DOMAIN,clash.razord.top,DIRECT
       - DOMAIN-SUFFIX,lancache.steamcontent.com,DIRECT
       - DOMAIN,yacd.haishan.me,🔰国外流量
+      - DOMAIN-SUFFIX,openai.com,🤖OpenAI
       - RULE-SET,IDM,🔽IDM
       - RULE-SET,DownLoadClient,DIRECT
       - RULE-SET,ProxyClient,DIRECT
