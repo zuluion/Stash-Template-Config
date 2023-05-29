@@ -255,6 +255,7 @@ BASE-DATA:
     icon-Malaysia: &icon-Malaysia https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Malaysia.png
     icon-Bot: &icon-Bot https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Bot.png
     icon-OneDrive: &icon-OneDrive https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/OneDrive.png
+    icon-Game: &icon-Game https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Game.png
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -379,6 +380,12 @@ proxy-groups:
   -
     name: 🎮Steam
     icon: *icon-Steam
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: 🎮Netch
+    icon: *icon-Game
     type: select
     proxies:
       *proxies-all
