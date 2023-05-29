@@ -1,782 +1,777 @@
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    # 基础数据 设置锚点 复用 
-    BASE-DATA:
-      common:
-        health-check-url: &health-check-url http://www.gstatic.com/generate_204
-        proxies-all: &proxies-all
-          - 🔰国外流量
-          - 🚀直接连接
-          - 🇭🇰 AIRPORT-HK
-          - 🇨🇳 AIRPORT-TW
-          - 🇸🇬 AIRPORT-SG
-          - 🇯🇵 AIRPORT-JP
-          - 🇰🇷 AIRPORT-Korea
-          - 🇺🇸 AIRPORT-US
-          - 🇮🇳 AIRPORT-India
-          - 🇬🇧 AIRPORT-EN
-          - 🇮🇪 AIRPORT-Ireland
-          - 🇷🇺 AIRPORT-RU
-          - 🇨🇦 AIRPORT-Canada
-          - 🇫🇷 AIRPORT-FR
-          - 🇦🇺 AIRPORT-AU
-          - AIRPORT
-        proxies-all-fdirect: &proxies-all-fdirect
-          - 🚀直接连接
-          - 🔰国外流量
-          - 🇭🇰 AIRPORT-HK
-          - 🇨🇳 AIRPORT-TW
-          - 🇸🇬 AIRPORT-SG
-          - 🇯🇵 AIRPORT-JP
-          - 🇰🇷 AIRPORT-Korea
-          - 🇺🇸 AIRPORT-US
-          - 🇮🇳 AIRPORT-India
-          - 🇬🇧 AIRPORT-EN
-          - 🇮🇪 AIRPORT-Ireland
-          - 🇷🇺 AIRPORT-RU
-          - 🇨🇦 AIRPORT-Canada
-          - 🇫🇷 AIRPORT-FR
-          - 🇦🇺 AIRPORT-AU
-          - AIRPORT
-        proxies-all-oforeign: &proxies-all-oforeign
-          - 🇭🇰 AIRPORT-HK
-          - 🇨🇳 AIRPORT-TW
-          - 🇸🇬 AIRPORT-SG
-          - 🇯🇵 AIRPORT-JP
-          - 🇰🇷 AIRPORT-Korea
-          - 🇺🇸 AIRPORT-US
-          - 🇮🇳 AIRPORT-India
-          - 🇬🇧 AIRPORT-EN
-          - 🇮🇪 AIRPORT-Ireland
-          - 🇷🇺 AIRPORT-RU
-          - 🇨🇦 AIRPORT-Canada
-          - 🇫🇷 AIRPORT-FR
-          - 🇦🇺 AIRPORT-AU
-          - AIRPORT
-        proxies-use-special-streaming-media: &proxies-use-special-streaming-media
-          - airport-hk
-          - airport-tw
-          - airport-sg
-          - airport-jp
-          - airport-korea
-          - airport-us
-      
-      proxy-providers-config:
-        proxy-providers-common:
-          airport-interval: &airport-interval 36000
-          url-airport: &url-airport "http://sub.store/download/这里修改成自己的机场链接或者将这里的汉字修改成本地Sub-Store的订阅名称" # 这里填入机场链接
-          proxy-file-path-AirPort: &proxy-file-path-AirPort myprovider/proxies/provider-airport.yml
-        proxy-providers-filter:
-          proxy-filter-HK: &proxy-filter-HK '港'
-          proxy-filter-TW: &proxy-filter-TW '台湾'
-          proxy-filter-SG: &proxy-filter-SG '新加坡'
-          proxy-filter-JP: &proxy-filter-JP '日本'
-          proxy-filter-FR: &proxy-filter-FR '法国'
-          proxy-filter-AU: &proxy-filter-AU '澳大利亚'
-          proxy-filter-Ireland: &proxy-filter-Ireland '爱尔兰'
-          proxy-filter-EN: &proxy-filter-EN '英国'
-          proxy-filter-Korea: &proxy-filter-Korea '韩国'
-          proxy-filter-RU: &proxy-filter-RU '俄罗斯'
-          proxy-filter-US: &proxy-filter-US '美国'
-          proxy-filter-Canada: &proxy-filter-Canada '加拿大'
-          proxy-filter-India: &proxy-filter-India '印度'
-          proxy-filter-TR: &proxy-filter-TR '土耳其'
-          proxy-filter-TL: &proxy-filter-TL '泰国'
-          proxy-filter-AGT: &proxy-filter-AGT '阿根廷'
-          proxy-filter-PLP: &proxy-filter-PLP '菲律宾'
-          proxy-filter-Malaysia: &proxy-filter-Malaysia '马来西亚'
-      
-      rule-providers-config:
-        rule-providers-common:
-          rule-interval: &rule-interval 3600
-        rule-providers-group:
-          AdBlock:
-            rule-file-path-AdBlock: &rule-file-path-AdBlock myprovider/ruleset/AdBlock.yaml
-            rule-provider-url-AdBlock: &rule-provider-url-AdBlock https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/AdBlock.yaml
-          Apple:
-            rule-file-path-Apple: &rule-file-path-Apple myprovider/ruleset/Apple.yaml
-            rule-provider-url-Apple: &rule-provider-url-Apple https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Apple.yaml
-          Adobe:
-            rule-file-path-Adobe: &rule-file-path-Adobe myprovider/ruleset/Adobe.yaml
-            rule-provider-url-Adobe: &rule-provider-url-Adobe https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Adobe.yaml
-          Amazon:
-            rule-file-path-Amazon: &rule-file-path-Amazon myprovider/ruleset/Amazon.yaml
-            rule-provider-url-Amazon: &rule-provider-url-Amazon https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Amazon.yaml
-          China:
-            rule-file-path-China: &rule-file-path-China myprovider/ruleset/China.yaml
-            rule-provider-url-China: &rule-provider-url-China https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/China.yaml
-          Bilibili:
-            rule-file-path-Bilibili: &rule-file-path-BiliBili myprovider/ruleset/Bilibili.yaml
-            rule-provider-url-BiliBili: &rule-provider-url-BiliBili https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Bilibili.yaml
-          Facebook:
-            rule-file-path-Facebook: &rule-file-path-Facebook myprovider/ruleset/Facebook.yaml
-            rule-provider-url-Facebook: &rule-provider-url-Facebook https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Facebook.yaml
-          GitHub: 
-            rule-file-path-GitHub: &rule-file-path-GitHub myprovider/ruleset/GitHub.yaml
-            rule-provider-url-GitHub: &rule-provider-url-GitHub https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/GitHub.yaml
-          Google:
-            rule-file-path-Google: &rule-file-path-Google myprovider/ruleset/Google.yaml
-            rule-provider-url-Google: &rule-provider-url-Google https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Google.yaml
-          Microsoft:
-            rule-file-path-Microsoft: &rule-file-path-Microsoft myprovider/ruleset/Microsoft.yaml
-            rule-provider-url-Microsoft: &rule-provider-url-Microsoft https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Microsoft.yaml
-          Netflix:
-            rule-file-path-Netflix: &rule-file-path-Netflix myprovider/ruleset/Netflix.yaml
-            rule-provider-url-Netflix: &rule-provider-url-Netflix https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Netflix.yaml
-          Spotify:
-            rule-file-path-Spotify: &rule-file-path-Spotify myprovider/ruleset/Spotify.yaml
-            rule-provider-url-Spotify: &rule-provider-url-Spotify https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Spotify.yaml
-          Speedtest:
-            rule-file-path-Speedtest: &rule-file-path-Speedtest myprovider/ruleset/Speedtest.yaml
-            rule-provider-url-Speedtest: &rule-provider-url-Speedtest https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Speedtest.yaml
-          Steam:
-            rule-file-path-Steam: &rule-file-path-Steam myprovider/ruleset/Steam.yaml
-            rule-provider-url-Steam: &rule-provider-url-Steam https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Steam.yaml
-          Telegram:
-            rule-file-path-Telegram: &rule-file-path-Telegram myprovider/ruleset/Telegram.yaml
-            rule-provider-url-Telegram: &rule-provider-url-Telegram https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Telegram.yaml
-          Twitter:
-            rule-file-path-Twitter: &rule-file-path-Twitter myprovider/ruleset/Twitter.yaml
-            rule-provider-url-Twitter: &rule-provider-url-Twitter https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Twitter.yaml
-          Tencent:
-            rule-file-path-Tencent: &rule-file-path-Tencent myprovider/ruleset/Tencent.yaml
-            rule-provider-url-Tencent: &rule-provider-url-Tencent https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Tencent.yaml
-          YouTube:
-            rule-file-path-YouTube: &rule-file-path-YouTube myprovider/ruleset/YouTube.yaml
-            rule-provider-url-YouTube: &rule-provider-url-YouTube https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/YouTube.yaml
-          TikTok:
-            rule-file-path-TikTok: &rule-file-path-TikTok  myprovider/ruleset/TikTok.yaml
-            rule-provider-url-TikTok: &rule-provider-url-TikTok  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/TikTok.yaml
-          PayPal:
-            rule-file-path-PayPal: &rule-file-path-PayPal  myprovider/ruleset/PayPal.yaml
-            rule-provider-url-PayPal: &rule-provider-url-PayPal  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/PayPal.yaml
-          Discord:
-            rule-file-path-Discord: &rule-file-path-Discord  myprovider/ruleset/Discord.yaml
-            rule-provider-url-Discord: &rule-provider-url-Discord  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Discord.yaml
-          Proxy:
-            rule-file-path-Proxy: &rule-file-path-Proxy  myprovider/ruleset/Proxy.yaml
-            rule-provider-url-Proxy: &rule-provider-url-Proxy  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Proxy.yaml
-          ProxyClient:
-            rule-file-path-ProxyClient: &rule-file-path-ProxyClient  myprovider/ruleset/ProxyClient.yaml
-            rule-provider-url-ProxyClient: &rule-provider-url-ProxyClient  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/ProxyClient.yaml
-          DisneyPlus:
-            rule-file-path-DisneyPlus: &rule-file-path-DisneyPlus  myprovider/ruleset/DisneyPlus.yaml
-            rule-provider-url-DisneyPlus: &rule-provider-url-DisneyPlus  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/DisneyPlus.yaml
-          Hulu:
-            rule-file-path-Hulu: &rule-file-path-Hulu  myprovider/ruleset/Hulu.yaml
-            rule-provider-url-Hulu: &rule-provider-url-Hulu  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Hulu.yaml
-          HBO:
-            rule-file-path-HBO: &rule-file-path-HBO myprovider/ruleset/HBO.yaml
-            rule-provider-url-HBO: &rule-provider-url-HBO https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/HBO.yaml
-          Direct:
-            rule-file-path-Direct: &rule-file-path-Direct myprovider/ruleset/Direct.yaml
-            rule-provider-url-Direct: &rule-provider-url-Direct https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Direct.yaml
-          DownLoadClient:
-            rule-file-path-DownLoadClient: &rule-file-path-DownLoadClient myprovider/ruleset/DownLoadClient.yaml
-            rule-provider-url-DownLoadClient: &rule-provider-url-DownLoadClient https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/DownLoadClient.yaml
-          IDM:
-            rule-file-path-IDM: &rule-file-path-IDM myprovider/ruleset/IDM.yaml
-            rule-provider-url-IDM: &rule-provider-url-IDM https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/IDM.yaml
+# 基础数据 设置锚点 复用 
+BASE-DATA:
+  common:
+    health-check-url: &health-check-url http://www.gstatic.com/generate_204
+    proxies-all: &proxies-all
+      - 🔰国外流量
+      - 🚀直接连接
+      - 🇭🇰 AIRPORT-HK
+      - 🇨🇳 AIRPORT-TW
+      - 🇸🇬 AIRPORT-SG
+      - 🇯🇵 AIRPORT-JP
+      - 🇰🇷 AIRPORT-Korea
+      - 🇺🇸 AIRPORT-US
+      - 🇮🇳 AIRPORT-India
+      - 🇬🇧 AIRPORT-EN
+      - 🇮🇪 AIRPORT-Ireland
+      - 🇷🇺 AIRPORT-RU
+      - 🇨🇦 AIRPORT-Canada
+      - 🇫🇷 AIRPORT-FR
+      - 🇦🇺 AIRPORT-AU
+      - AIRPORT
+    proxies-all-fdirect: &proxies-all-fdirect
+      - 🚀直接连接
+      - 🔰国外流量
+      - 🇭🇰 AIRPORT-HK
+      - 🇨🇳 AIRPORT-TW
+      - 🇸🇬 AIRPORT-SG
+      - 🇯🇵 AIRPORT-JP
+      - 🇰🇷 AIRPORT-Korea
+      - 🇺🇸 AIRPORT-US
+      - 🇮🇳 AIRPORT-India
+      - 🇬🇧 AIRPORT-EN
+      - 🇮🇪 AIRPORT-Ireland
+      - 🇷🇺 AIRPORT-RU
+      - 🇨🇦 AIRPORT-Canada
+      - 🇫🇷 AIRPORT-FR
+      - 🇦🇺 AIRPORT-AU
+      - AIRPORT
+    proxies-all-oforeign: &proxies-all-oforeign
+      - 🇭🇰 AIRPORT-HK
+      - 🇨🇳 AIRPORT-TW
+      - 🇸🇬 AIRPORT-SG
+      - 🇯🇵 AIRPORT-JP
+      - 🇰🇷 AIRPORT-Korea
+      - 🇺🇸 AIRPORT-US
+      - 🇮🇳 AIRPORT-India
+      - 🇬🇧 AIRPORT-EN
+      - 🇮🇪 AIRPORT-Ireland
+      - 🇷🇺 AIRPORT-RU
+      - 🇨🇦 AIRPORT-Canada
+      - 🇫🇷 AIRPORT-FR
+      - 🇦🇺 AIRPORT-AU
+      - AIRPORT
+    proxies-all-for-tiktok: &proxies-all-for-tiktok
+      - 🇺🇸 AIRPORT-US
+      - 🔰国外流量
+      - AIRPORT
+      - 🇭🇰 AIRPORT-HK
+      - 🇨🇳 AIRPORT-TW
+      - 🇸🇬 AIRPORT-SG
+      - 🇯🇵 AIRPORT-JP
+      - 🇰🇷 AIRPORT-Korea
+      - 🇮🇳 AIRPORT-India
+      - 🇬🇧 AIRPORT-EN
+      - 🇮🇪 AIRPORT-Ireland
+      - 🇷🇺 AIRPORT-RU
+      - 🇨🇦 AIRPORT-Canada
+      - 🇫🇷 AIRPORT-FR
+      - 🇦🇺 AIRPORT-AU
+    proxies-all-for-openai: &proxies-all-for-openai
+      - 🇰🇷 AIRPORT-Korea
+      - 🇯🇵 AIRPORT-JP
+      - 🇺🇸 AIRPORT-US
+      - 🇸🇬 AIRPORT-SG
+      - 🇬🇧 AIRPORT-EN
+      - 🇮🇪 AIRPORT-Ireland
+      - 🇨🇦 AIRPORT-Canada
+      - 🇫🇷 AIRPORT-FR
+      - 🇦🇺 AIRPORT-AU
+      - AIRPORT
+  
+  proxy-providers-config:
+    proxy-providers-use: &proxy-providers-use 
+      - airport
+    proxy-providers-common:
+      airport-interval: &airport-interval 36000
+      url-airport: &url-airport "http://sub.store/download/这里修改成自己的机场链接或者将这里的汉字修改成本地Sub-Store的订阅名称" # 这里填入机场链接
+      proxy-file-path-AirPort: &proxy-file-path-AirPort myprovider/proxies/provider-airport.yml
+    proxy-providers-filter:
+      proxy-filter-HK: &proxy-filter-HK '港|HK|HongKong'
+      proxy-filter-TW: &proxy-filter-TW '台湾|TW|Taiwan'
+      proxy-filter-SG: &proxy-filter-SG '新加坡|SG|Singapore'
+      proxy-filter-JP: &proxy-filter-JP '日本|JP|Japan'
+      proxy-filter-FR: &proxy-filter-FR '法国|FR|France'
+      proxy-filter-AU: &proxy-filter-AU '澳大利亚|AU|Australia'
+      proxy-filter-Ireland: &proxy-filter-Ireland '爱尔兰|Ireland'
+      proxy-filter-EN: &proxy-filter-EN '英国|UK|Britain|England'
+      proxy-filter-Korea: &proxy-filter-Korea '韩国|KR|Korean'
+      proxy-filter-RU: &proxy-filter-RU '俄罗斯|RU|Russia'
+      proxy-filter-US: &proxy-filter-US '美国|US|United States|America'
+      proxy-filter-Canada: &proxy-filter-Canada '加拿大|CA|Canada'
+      proxy-filter-India: &proxy-filter-India '印度|IN|India'
+      proxy-filter-TR: &proxy-filter-TR '土耳其|TUR|Turkey'
+      proxy-filter-TL: &proxy-filter-TL '泰国|TH|Thailand'
+      proxy-filter-AGT: &proxy-filter-AGT '阿根廷|AR|Argentina'
+      proxy-filter-PLP: &proxy-filter-PLP '菲律宾|PH|Philippines'
+      proxy-filter-Malaysia: &proxy-filter-Malaysia '马来西亚|MY|Malaysia'
+      proxy-filter-special-streaming-media: &proxy-filter-special-streaming-media '港|HK|HongKong|台湾|TW|Taiwan|新加坡|SG|Singapore|日本|JP|Japan|韩国|KR|Korean|美国|US|United States|America'
+  
+  rule-providers-config:
+    rule-providers-common:
+      rule-interval: &rule-interval 3600
+    rule-providers-group:
+      AdBlock:
+        rule-file-path-AdBlock: &rule-file-path-AdBlock myprovider/ruleset/AdBlock.yaml
+        rule-provider-url-AdBlock: &rule-provider-url-AdBlock https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/AdBlock.yaml
+      Apple:
+        rule-file-path-Apple: &rule-file-path-Apple myprovider/ruleset/Apple.yaml
+        rule-provider-url-Apple: &rule-provider-url-Apple https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Apple.yaml
+      Adobe:
+        rule-file-path-Adobe: &rule-file-path-Adobe myprovider/ruleset/Adobe.yaml
+        rule-provider-url-Adobe: &rule-provider-url-Adobe https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Adobe.yaml
+      Amazon:
+        rule-file-path-Amazon: &rule-file-path-Amazon myprovider/ruleset/Amazon.yaml
+        rule-provider-url-Amazon: &rule-provider-url-Amazon https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Amazon.yaml
+      China:
+        rule-file-path-China: &rule-file-path-China myprovider/ruleset/China.yaml
+        rule-provider-url-China: &rule-provider-url-China https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/China.yaml
+      Bilibili:
+        rule-file-path-Bilibili: &rule-file-path-BiliBili myprovider/ruleset/Bilibili.yaml
+        rule-provider-url-BiliBili: &rule-provider-url-BiliBili https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Bilibili.yaml
+      Facebook:
+        rule-file-path-Facebook: &rule-file-path-Facebook myprovider/ruleset/Facebook.yaml
+        rule-provider-url-Facebook: &rule-provider-url-Facebook https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Facebook.yaml
+      GitHub: 
+        rule-file-path-GitHub: &rule-file-path-GitHub myprovider/ruleset/GitHub.yaml
+        rule-provider-url-GitHub: &rule-provider-url-GitHub https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/GitHub.yaml
+      Google:
+        rule-file-path-Google: &rule-file-path-Google myprovider/ruleset/Google.yaml
+        rule-provider-url-Google: &rule-provider-url-Google https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Google.yaml
+      Microsoft:
+        rule-file-path-Microsoft: &rule-file-path-Microsoft myprovider/ruleset/Microsoft.yaml
+        rule-provider-url-Microsoft: &rule-provider-url-Microsoft https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Microsoft.yaml
+      Netflix:
+        rule-file-path-Netflix: &rule-file-path-Netflix myprovider/ruleset/Netflix.yaml
+        rule-provider-url-Netflix: &rule-provider-url-Netflix https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Netflix.yaml
+      Netch:
+        rule-file-path-Netch: &rule-file-path-Netch myprovider/ruleset/Netch.yaml
+        rule-provider-url-Netch: &rule-provider-url-Netch https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Netch.yaml
+      NewBing:
+        rule-file-path-NewBing: &rule-file-path-NewBing myprovider/ruleset/NewBing.yaml
+        rule-provider-url-NewBing: &rule-provider-url-NewBing https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/NewBing.yaml
+      OneDrive:
+        rule-file-path-OneDrive: &rule-file-path-OneDrive myprovider/ruleset/OneDrive.yaml
+        rule-provider-url-OneDrive: &rule-provider-url-OneDrive https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/OneDrive.yaml
+      OpenAI:
+        rule-file-path-OpenAI: &rule-file-path-OpenAI myprovider/ruleset/OpenAI.yaml
+        rule-provider-url-OpenAI: &rule-provider-url-OpenAI https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/OpenAI.yaml
+      Spotify:
+        rule-file-path-Spotify: &rule-file-path-Spotify myprovider/ruleset/Spotify.yaml
+        rule-provider-url-Spotify: &rule-provider-url-Spotify https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Spotify.yaml
+      Speedtest:
+        rule-file-path-Speedtest: &rule-file-path-Speedtest myprovider/ruleset/Speedtest.yaml
+        rule-provider-url-Speedtest: &rule-provider-url-Speedtest https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Speedtest.yaml
+      Steam:
+        rule-file-path-Steam: &rule-file-path-Steam myprovider/ruleset/Steam.yaml
+        rule-provider-url-Steam: &rule-provider-url-Steam https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Steam.yaml
+      Telegram:
+        rule-file-path-Telegram: &rule-file-path-Telegram myprovider/ruleset/Telegram.yaml
+        rule-provider-url-Telegram: &rule-provider-url-Telegram https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Telegram.yaml
+      Twitter:
+        rule-file-path-Twitter: &rule-file-path-Twitter myprovider/ruleset/Twitter.yaml
+        rule-provider-url-Twitter: &rule-provider-url-Twitter https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Twitter.yaml
+      Tencent:
+        rule-file-path-Tencent: &rule-file-path-Tencent myprovider/ruleset/Tencent.yaml
+        rule-provider-url-Tencent: &rule-provider-url-Tencent https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Tencent.yaml
+      YouTube:
+        rule-file-path-YouTube: &rule-file-path-YouTube myprovider/ruleset/YouTube.yaml
+        rule-provider-url-YouTube: &rule-provider-url-YouTube https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/YouTube.yaml
+      TikTok:
+        rule-file-path-TikTok: &rule-file-path-TikTok  myprovider/ruleset/TikTok.yaml
+        rule-provider-url-TikTok: &rule-provider-url-TikTok  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/TikTok.yaml
+      PayPal:
+        rule-file-path-PayPal: &rule-file-path-PayPal  myprovider/ruleset/PayPal.yaml
+        rule-provider-url-PayPal: &rule-provider-url-PayPal  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/PayPal.yaml
+      Discord:
+        rule-file-path-Discord: &rule-file-path-Discord  myprovider/ruleset/Discord.yaml
+        rule-provider-url-Discord: &rule-provider-url-Discord  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Discord.yaml
+      Proxy:
+        rule-file-path-Proxy: &rule-file-path-Proxy  myprovider/ruleset/Proxy.yaml
+        rule-provider-url-Proxy: &rule-provider-url-Proxy  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Proxy.yaml
+      ProxyClient:
+        rule-file-path-ProxyClient: &rule-file-path-ProxyClient  myprovider/ruleset/ProxyClient.yaml
+        rule-provider-url-ProxyClient: &rule-provider-url-ProxyClient  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/ProxyClient.yaml
+      DisneyPlus:
+        rule-file-path-DisneyPlus: &rule-file-path-DisneyPlus  myprovider/ruleset/DisneyPlus.yaml
+        rule-provider-url-DisneyPlus: &rule-provider-url-DisneyPlus  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/DisneyPlus.yaml
+      Hulu:
+        rule-file-path-Hulu: &rule-file-path-Hulu  myprovider/ruleset/Hulu.yaml
+        rule-provider-url-Hulu: &rule-provider-url-Hulu  https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Hulu.yaml
+      HBO:
+        rule-file-path-HBO: &rule-file-path-HBO myprovider/ruleset/HBO.yaml
+        rule-provider-url-HBO: &rule-provider-url-HBO https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/HBO.yaml
+      Direct:
+        rule-file-path-Direct: &rule-file-path-Direct myprovider/ruleset/Direct.yaml
+        rule-provider-url-Direct: &rule-provider-url-Direct https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Direct.yaml
+      DownLoadClient:
+        rule-file-path-DownLoadClient: &rule-file-path-DownLoadClient myprovider/ruleset/DownLoadClient.yaml
+        rule-provider-url-DownLoadClient: &rule-provider-url-DownLoadClient https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/DownLoadClient.yaml
+      IDM:
+        rule-file-path-IDM: &rule-file-path-IDM myprovider/ruleset/IDM.yaml
+        rule-provider-url-IDM: &rule-provider-url-IDM https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/IDM.yaml
 
-      icon-providers-config:
-        icon-Area: &icon-Area https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Area.png
-        icon-Final: &icon-Final https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Final.png
-        icon-Telegram: &icon-Telegram https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Telegram.png
-        icon-Discord: &icon-Discord https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Discord.png
-        icon-Facebook: &icon-Facebook https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Facebook.png
-        icon-YouTube: &icon-YouTube https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/YouTube.png
-        icon-TikTok: &icon-TikTok https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/TikTok_1.png
-        icon-Netflix: &icon-Netflix https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Netflix.png
-        icon-Disney: &icon-Disney https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Disney+_1.png
-        icon-Hulu: &icon-Hulu https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Hulu.png
-        icon-HBO: &icon-HBO https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/HBO_1.png
-        icon-bilibili: &icon-bilibili https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/bilibili_1.png
-        icon-ForeignMedia: &icon-ForeignMedia https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/ForeignMedia.png
-        icon-Spotify: &icon-Spotify https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Spotify.png
-        icon-Steam: &icon-Steam https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Steam.png
-        icon-Microsoft: &icon-Microsoft https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Microsoft.png
-        icon-PayPal: &icon-PayPal https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/PayPal.png
-        icon-Amazon: &icon-Amazon https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Amazon_1.png
-        icon-Speedtest: &icon-Speedtest https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Speedtest.png
-        icon-Apple: &icon-Apple https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Apple_1.png
-        icon-Download: &icon-Download https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Download.png
-        icon-Direct: &icon-Direct https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Direct.png
-        icon-Airport: &icon-Airport https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Airport.png
-        icon-Hong_Kong: &icon-Hong_Kong https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Hong_Kong.png
-        icon-Taiwan: &icon-Taiwan https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Taiwan.png
-        icon-Singapore: &icon-Singapore https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Singapore.png
-        icon-Japan: &icon-Japan https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Japan.png
-        icon-Korea: &icon-Korea https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Korea.png
-        icon-United_States: &icon-United_States https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/United_States.png
-        icon-India: &icon-India https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/India.png
-        icon-United_Kingdom: &icon-United_Kingdom https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/United_Kingdom.png
-        icon-Russia: &icon-Russia https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Russia.png
-        icon-Canada: &icon-Canada https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Canada.png
-        icon-France: &icon-France https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/France.png
-        icon-Australia: &icon-Australia https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Australia.png
-        icon-Turkey: &icon-Turkey https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Turkey.png
-        icon-Thailand: &icon-Thailand https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Thailand.png
-        icon-Argentina: &icon-Argentina https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Argentina.png
-        icon-Philippines: &icon-Philippines https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Philippines.png
-        icon-Malaysia: &icon-Malaysia https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Malaysia.png
-        icon-Bot: &icon-Bot https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Bot.png
+  icon-providers-config:
+    icon-Area: &icon-Area https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Area.png
+    icon-Final: &icon-Final https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Final.png
+    icon-Telegram: &icon-Telegram https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Telegram.png
+    icon-Discord: &icon-Discord https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Discord.png
+    icon-Facebook: &icon-Facebook https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Facebook.png
+    icon-YouTube: &icon-YouTube https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/YouTube.png
+    icon-TikTok: &icon-TikTok https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/TikTok_1.png
+    icon-Netflix: &icon-Netflix https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Netflix.png
+    icon-Disney: &icon-Disney https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Disney+_1.png
+    icon-Hulu: &icon-Hulu https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Hulu.png
+    icon-HBO: &icon-HBO https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/HBO_1.png
+    icon-bilibili: &icon-bilibili https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/bilibili_1.png
+    icon-ForeignMedia: &icon-ForeignMedia https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/ForeignMedia.png
+    icon-Spotify: &icon-Spotify https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Spotify.png
+    icon-Steam: &icon-Steam https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Steam.png
+    icon-Microsoft: &icon-Microsoft https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Microsoft.png
+    icon-PayPal: &icon-PayPal https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/PayPal.png
+    icon-Amazon: &icon-Amazon https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Amazon_1.png
+    icon-Speedtest: &icon-Speedtest https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Speedtest.png
+    icon-Apple: &icon-Apple https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Apple_1.png
+    icon-Download: &icon-Download https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Download.png
+    icon-Direct: &icon-Direct https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Direct.png
+    icon-Airport: &icon-Airport https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Airport.png
+    icon-Hong_Kong: &icon-Hong_Kong https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Hong_Kong.png
+    icon-Taiwan: &icon-Taiwan https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Taiwan.png
+    icon-Singapore: &icon-Singapore https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Singapore.png
+    icon-Japan: &icon-Japan https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Japan.png
+    icon-Korea: &icon-Korea https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Korea.png
+    icon-United_States: &icon-United_States https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/United_States.png
+    icon-India: &icon-India https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/India.png
+    icon-United_Kingdom: &icon-United_Kingdom https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/United_Kingdom.png
+    icon-Russia: &icon-Russia https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Russia.png
+    icon-Canada: &icon-Canada https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Canada.png
+    icon-France: &icon-France https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/France.png
+    icon-Australia: &icon-Australia https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Australia.png
+    icon-Turkey: &icon-Turkey https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Turkey.png
+    icon-Thailand: &icon-Thailand https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Thailand.png
+    icon-Argentina: &icon-Argentina https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Argentina.png
+    icon-Philippines: &icon-Philippines https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Philippines.png
+    icon-Malaysia: &icon-Malaysia https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Malaysia.png
+    icon-Bot: &icon-Bot https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Bot.png
+    icon-OneDrive: &icon-OneDrive https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/OneDrive.png
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    
-    
-    
-    port: 7890
-    socks-port: 7891
-    redir-port: 7892
-    allow-lan: false
-    mode: rule
-    log-level: silent
-    ipv6: false
-    external-controller: '0.0.0.0:9090'
-    
-    profile:
-      store-selected: false
-      tracing: true
-    
+
+
+
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: false
+mode: rule
+log-level: silent
+ipv6: false
+external-controller: '0.0.0.0:9090'
+
+profile:
+  store-selected: false
+  tracing: true
+
+proxies:
+
+proxy-groups:
+  # relay chains the proxies. proxies shall not contain a relay. No UDP support.
+  # Traffic: clash <-> http <-> vmess <-> ss1 <-> ss2 <-> Internet
+  -
+    name: 🔰国外流量
+    icon: *icon-Area
+    type: select
     proxies:
-    
-    proxy-groups:
-      # relay chains the proxies. proxies shall not contain a relay. No UDP support.
-      # Traffic: clash <-> http <-> vmess <-> ss1 <-> ss2 <-> Internet
-      -
-        name: 🔰国外流量
-        icon: *icon-Area
-        type: select
-        proxies:
-          *proxies-all-oforeign
-      -
-        name: ⚓️其他流量
-        icon: *icon-Final
-        type: select
-        proxies:
-          *proxies-all
-      -
-        name: ✈️Telegram
-        icon: *icon-Telegram
-        type: select
-        proxies:
-          *proxies-all
-      -
-        name: 🎙Discord
-        icon: *icon-Discord
-        type: select
-        proxies:
-          *proxies-all
-      -
-        name: 📘Facebook
-        icon: *icon-Facebook
-        type: select
-        proxies:
-          *proxies-all
-      -
-        name: 🤖OpenAI
-        icon: *icon-Bot
-        type: select
-        proxies:
-          *proxies-all
-      -
-        name: 🎬Youtube
-        icon: *icon-YouTube
-        type: select
-        proxies:
-          *proxies-all
-      -
-        name: 🎬TikTok
-        icon: *icon-TikTok
-        type: select
-        proxies:
-          - 🇺🇸 AIRPORT-US
-          - 🔰国外流量
-          - AIRPORT
-          - 🇭🇰 AIRPORT-HK
-          - 🇨🇳 AIRPORT-TW
-          - 🇸🇬 AIRPORT-SG
-          - 🇯🇵 AIRPORT-JP
-          - 🇰🇷 AIRPORT-Korea
-          - 🇮🇳 AIRPORT-India
-          - 🇬🇧 AIRPORT-EN
-          - 🇮🇪 AIRPORT-Ireland
-          - 🇷🇺 AIRPORT-RU
-          - 🇨🇦 AIRPORT-Canada
-          - 🇫🇷 AIRPORT-FR
-          - 🇦🇺 AIRPORT-AU
-      -
-        name: 🎬Netflix
-        icon: *icon-Netflix
-        type: select
-        use:
-          *proxies-use-special-streaming-media
-        proxies:
-          *proxies-all
-      -
-        name: 🎬DisneyPlus
-        icon: *icon-Disney
-        type: select
-        use:
-          *proxies-use-special-streaming-media
-        proxies:
-          *proxies-all
-      -
-        name: 🎬Hulu
-        icon: *icon-Hulu
-        type: select
-        use:
-          *proxies-use-special-streaming-media
-        proxies:
-          *proxies-all
-      -
-        name: 🎬HBO
-        icon: *icon-HBO
-        type: select
-        use:
-          *proxies-use-special-streaming-media
-        proxies:
-          *proxies-all
-      -
-        name: 🎬哔哩哔哩
-        icon: *icon-bilibili
-        type: select
-        proxies:
-          *proxies-all-fdirect
-      -
-        name: 🎬国外媒体
-        icon: *icon-ForeignMedia
-        type: select
-        proxies:
-          *proxies-all
-      -
-        name: 🎧Spotify
-        icon: *icon-Spotify
-        type: select
-        proxies:
-          *proxies-all
-      -
-        name: 🎮Steam
-        icon: *icon-Steam
-        type: select
-        proxies:
-          *proxies-all-fdirect
-      -
-        name: 💻Microsoft
-        icon: *icon-Microsoft
-        type: select
-        proxies:
-          *proxies-all-fdirect
-      -
-        name: 🧧Paypal
-        icon: *icon-PayPal
-        type: select
-        proxies:
-          *proxies-all
-      -
-        name: 🚚Amazon
-        icon: *icon-Amazon
-        type: select
-        proxies:
-          *proxies-all-fdirect
-      -
-        name: 📡Speedtest
-        icon: *icon-Speedtest
-        type: select
-        proxies:
-          *proxies-all-fdirect
-      -
-        name: 🍎苹果服务
-        icon: *icon-Apple
-        type: select
-        proxies:
-          *proxies-all-fdirect
-      -
-        name: 🔽IDM
-        icon: *icon-Download
-        type: select
-        proxies:
-          - 🚀直接连接
-          - 🔰国外流量
-      -
-        name: 🚀直接连接
-        icon: *icon-Direct
-        type: select
-        proxies:
-          - DIRECT
-      -
-        name: AIRPORT
-        icon: *icon-Airport
-        type: select
-        use:
-          - airport
-      -
-        name: 🇭🇰 AIRPORT-HK
-        icon: *icon-Hong_Kong
-        type: select
-        use:
-          - airport-hk
-      -
-        name: 🇨🇳 AIRPORT-TW
-        icon: *icon-Taiwan
-        type: select
-        use:
-          - airport-tw
-      -
-        name: 🇸🇬 AIRPORT-SG
-        icon: *icon-Singapore
-        type: select
-        use:
-          - airport-sg
-      -
-        name: 🇯🇵 AIRPORT-JP
-        icon: *icon-Japan
-        type: select
-        use:
-          - airport-jp
-      -
-        name: 🇰🇷 AIRPORT-Korea
-        icon: *icon-Korea
-        type: select
-        use:
-          - airport-korea
-      -
-        name: 🇺🇸 AIRPORT-US
-        icon: *icon-United_States
-        type: select
-        use:
-          - airport-us  
-      -
-        name: 🇮🇳 AIRPORT-India
-        icon: *icon-India
-        type: select
-        use:
-          - airport-india 
-      -
-        name: 🇬🇧 AIRPORT-EN
-        icon: *icon-United_Kingdom
-        type: select
-        use:
-          - airport-en 
-      -
-        name: 🇮🇪 AIRPORT-Ireland
-        icon: *icon-United_Kingdom
-        type: select
-        use:
-          - airport-ireland 
-      -
-        name: 🇷🇺 AIRPORT-RU
-        icon: *icon-Russia
-        type: select
-        use:
-          - airport-ru
-      -
-        name: 🇨🇦 AIRPORT-Canada
-        icon: *icon-Canada
-        type: select
-        use:
-          - airport-canada
-      -
-        name: 🇫🇷 AIRPORT-FR
-        icon: *icon-France
-        type: select
-        use:
-          - airport-fr
-      -
-        name: 🇦🇺 AIRPORT-AU
-        icon: *icon-Australia
-        type: select
-        use:
-          - airport-au
-    
-    proxy-providers:
-      airport:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        path: *proxy-file-path-AirPort
-        health-check:
-          enable: true
-          interval: *airport-interval
-          # lazy: true
-          url: *health-check-url
-      airport-hk:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-HK
-      airport-tw:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-TW 
-      airport-sg:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-SG 
-      airport-jp:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-JP 
-      airport-fr:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-FR
-      airport-au:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-AU
-      airport-ireland:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-Ireland
-      airport-en:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-EN
-      airport-korea:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-Korea
-      airport-ru:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-RU
-      airport-us:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-US
-      airport-canada:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-Canada
-      airport-india:
-        type: http
-        url: *url-airport 
-        interval: *airport-interval
-        filter: *proxy-filter-India
-    
-    rules:
-      - DOMAIN-SUFFIX,smtp,DIRECT
-      - DOMAIN-KEYWORD,aria2,DIRECT
-      - DOMAIN,clash.razord.top,DIRECT
-      - DOMAIN-SUFFIX,lancache.steamcontent.com,DIRECT
-      - DOMAIN,yacd.haishan.me,🔰国外流量
-      - DOMAIN-SUFFIX,openai.com,🤖OpenAI
-      - RULE-SET,IDM,🔽IDM
-      - RULE-SET,DownLoadClient,DIRECT
-      - RULE-SET,ProxyClient,DIRECT
-      - RULE-SET,AdBlock,REJECT
-      - RULE-SET,Apple,🍎苹果服务
-      - RULE-SET,Adobe,⚓️其他流量
-      - RULE-SET,Amazon,🚚Amazon
-      - RULE-SET,BiliBili,🎬哔哩哔哩
-      - RULE-SET,GitHub,🔰国外流量
-      - RULE-SET,Google,🔰国外流量
-      - RULE-SET,Microsoft,💻Microsoft
-      - RULE-SET,Netflix,🎬Netflix 
-      - RULE-SET,DisneyPlus,🎬DisneyPlus 
-      - RULE-SET,Hulu,🎬Hulu
-      - RULE-SET,HBO,🎬HBO
-      - RULE-SET,TikTok,🎬TikTok
-      - RULE-SET,Speedtest,📡Speedtest
-      - RULE-SET,Steam,🎮Steam
-      - RULE-SET,Spotify,🎧Spotify
-      - RULE-SET,Telegram,✈️Telegram 
-      - RULE-SET,Twitter,🔰国外流量 
-      - RULE-SET,Tencent,🚀直接连接
-      - RULE-SET,YouTube,🎬Youtube 
-      - RULE-SET,PayPal,🧧Paypal
-      - RULE-SET,Discord,🎙Discord
-      - RULE-SET,Facebook,📘Facebook 
-      - RULE-SET,Proxy,🔰国外流量
-      - RULE-SET,Direct,DIRECT
-      - DOMAIN-SUFFIX,live.cn,🚀直接连接
-    
-      - GEOIP,CN,DIRECT
-      - MATCH,⚓️其他流量
-    
-    rule-providers:
-      AdBlock: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-AdBlock
-        url: *rule-provider-url-AdBlock
-        interval: *rule-interval
-      Apple: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Apple
-        url: *rule-provider-url-Apple
-        interval: *rule-interval
-      Adobe: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Adobe
-        url: *rule-provider-url-Adobe
-        interval: *rule-interval
-      Amazon: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Amazon
-        url: *rule-provider-url-Amazon
-        interval: *rule-interval
-      China: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-China
-        url: *rule-provider-url-China
-        interval: *rule-interval
-      BiliBili: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-BiliBili
-        url: *rule-provider-url-BiliBili
-        interval: *rule-interval
-      Facebook: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Facebook
-        url: *rule-provider-url-Facebook
-        interval: *rule-interval
-      GitHub: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-GitHub
-        url: *rule-provider-url-GitHub
-        interval: *rule-interval
-      Google: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Google
-        url: *rule-provider-url-Google
-        interval: *rule-interval
-      Microsoft: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Microsoft
-        url: *rule-provider-url-Microsoft
-        interval: *rule-interval
-      Netflix: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Netflix
-        url: *rule-provider-url-Netflix
-        interval: *rule-interval
-      Spotify: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Spotify
-        url: *rule-provider-url-Spotify
-        interval: *rule-interval
-      Speedtest: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Speedtest
-        url: *rule-provider-url-Speedtest
-        interval: *rule-interval
-      Steam: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Steam
-        url: *rule-provider-url-Steam
-        interval: *rule-interval
-      Telegram: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Telegram
-        url: *rule-provider-url-Telegram
-        interval: *rule-interval
-      Twitter: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Twitter
-        url: *rule-provider-url-Twitter
-        interval: *rule-interval
-      Tencent: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Tencent
-        url: *rule-provider-url-Tencent
-        interval: *rule-interval
-      YouTube: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-YouTube
-        url: *rule-provider-url-YouTube
-        interval: *rule-interval
-      TikTok: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-TikTok
-        url: *rule-provider-url-TikTok 
-        interval: *rule-interval
-      PayPal: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-PayPal
-        url: *rule-provider-url-PayPal 
-        interval: *rule-interval
-      Discord: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Discord
-        url: *rule-provider-url-Discord 
-        interval: *rule-interval
-      Proxy: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Proxy
-        url: *rule-provider-url-Proxy 
-        interval: *rule-interval
-      ProxyClient: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-ProxyClient
-        url: *rule-provider-url-ProxyClient 
-        interval: *rule-interval
-      DisneyPlus: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-DisneyPlus
-        url: *rule-provider-url-DisneyPlus 
-        interval: *rule-interval
-      Hulu: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Hulu
-        url: *rule-provider-url-Hulu 
-        interval: *rule-interval
-      HBO: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-HBO
-        url: *rule-provider-url-HBO
-        interval: *rule-interval
-      Direct: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-Direct
-        url: *rule-provider-url-Direct
-        interval: *rule-interval
-      DownLoadClient: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-DownLoadClient
-        url: *rule-provider-url-DownLoadClient
-        interval: *rule-interval
-      IDM: 
-        type: http
-        behavior: classical
-        path: *rule-file-path-IDM
-        url: *rule-provider-url-IDM
-        interval: *rule-interval
+      *proxies-all-oforeign
+  -
+    name: ⚓️其他流量
+    icon: *icon-Final
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: ✈️Telegram
+    icon: *icon-Telegram
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: 🎙Discord
+    icon: *icon-Discord
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: 📘Facebook
+    icon: *icon-Facebook
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: 🤖OpenAI
+    icon: *icon-Bot
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: 🎬Youtube
+    icon: *icon-YouTube
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: 🎬TikTok
+    icon: *icon-TikTok
+    type: select
+    proxies:
+      *proxies-all-for-tiktok
+  -
+    name: 🎬Netflix
+    icon: *icon-Netflix
+    type: select
+    filter: *proxy-filter-special-streaming-media
+    include-all: true
+    proxies:
+      *proxies-all
+  -
+    name: 🎬DisneyPlus
+    icon: *icon-Disney
+    type: select
+    filter: *proxy-filter-special-streaming-media
+    include-all: true
+    proxies:
+      *proxies-all
+  -
+    name: 🎬Hulu
+    icon: *icon-Hulu
+    type: select
+    filter: *proxy-filter-special-streaming-media
+    include-all: true
+    proxies:
+      *proxies-all
+  -
+    name: 🎬HBO
+    icon: *icon-HBO
+    type: select
+    filter: *proxy-filter-special-streaming-media
+    include-all: true
+    proxies:
+      *proxies-all
+  -
+    name: 🎬哔哩哔哩
+    icon: *icon-bilibili
+    type: select
+    proxies:
+      *proxies-all-fdirect
+  -
+    name: 🎬国外媒体
+    icon: *icon-ForeignMedia
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: 🎧Spotify
+    icon: *icon-Spotify
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: 🎮Steam
+    icon: *icon-Steam
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: 💻Microsoft
+    icon: *icon-Microsoft
+    type: select
+    proxies:
+      *proxies-all-fdirect
+  -
+    name: ☁OneDrive
+    icon: *icon-OneDrive
+    type: select
+    proxies:
+      *proxies-all-fdirect
+  -
+    name: 🤖NewBing
+    icon: *icon-Bot
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: 🧧Paypal
+    icon: *icon-PayPal
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: 🚚Amazon
+    icon: *icon-Amazon
+    type: select
+    proxies:
+      *proxies-all-fdirect
+  -
+    name: 📡Speedtest
+    icon: *icon-Speedtest
+    type: select
+    proxies:
+      *proxies-all-fdirect
+  -
+    name: 🍎苹果服务
+    icon: *icon-Apple
+    type: select
+    proxies:
+      *proxies-all-fdirect
+  -
+    name: 🔽IDM
+    icon: *icon-Download
+    type: select
+    proxies:
+      - 🚀直接连接
+      - 🔰国外流量
+  -
+    name: 🚀直接连接
+    icon: *icon-Direct
+    type: select
+    proxies:
+      - DIRECT
+  -
+    name: AIRPORT
+    icon: *icon-Airport
+    type: select
+    include-all: true
+  -
+    name: 🇭🇰 AIRPORT-HK
+    icon: *icon-Hong_Kong
+    type: select
+    filter: *proxy-filter-HK
+    include-all: true
+  -
+    name: 🇨🇳 AIRPORT-TW
+    icon: *icon-Taiwan
+    type: select
+    filter: *proxy-filter-TW
+    include-all: true
+  -
+    name: 🇸🇬 AIRPORT-SG
+    icon: *icon-Singapore
+    type: select
+    filter: *proxy-filter-SG
+    include-all: true
+  -
+    name: 🇯🇵 AIRPORT-JP
+    icon: *icon-Japan
+    type: select
+    filter: *proxy-filter-JP
+    include-all: true
+  -
+    name: 🇰🇷 AIRPORT-Korea
+    icon: *icon-Korea
+    type: select
+    filter: *proxy-filter-Korea
+    include-all: true
+  -
+    name: 🇺🇸 AIRPORT-US
+    icon: *icon-United_States
+    type: select
+    filter: *proxy-filter-US
+    include-all: true
+  -
+    name: 🇮🇳 AIRPORT-India
+    icon: *icon-India
+    type: select
+    filter: *proxy-filter-India
+    include-all: true
+  -
+    name: 🇬🇧 AIRPORT-EN
+    icon: *icon-United_Kingdom
+    type: select
+    filter: *proxy-filter-EN
+    include-all: true
+  -
+    name: 🇮🇪 AIRPORT-Ireland
+    icon: *icon-United_Kingdom
+    type: select
+    filter: *proxy-filter-Ireland
+    include-all: true
+  -
+    name: 🇷🇺 AIRPORT-RU
+    icon: *icon-Russia
+    type: select
+    filter: *proxy-filter-RU
+    include-all: true
+  -
+    name: 🇨🇦 AIRPORT-Canada
+    icon: *icon-Canada
+    type: select
+    filter: *proxy-filter-Canada
+    include-all: true
+  -
+    name: 🇫🇷 AIRPORT-FR
+    icon: *icon-France
+    type: select
+    filter: *proxy-filter-FR
+    include-all: true
+  -
+    name: 🇦🇺 AIRPORT-AU
+    icon: *icon-Australia
+    type: select
+    filter: *proxy-filter-AU
+    include-all: true
+
+proxy-providers:
+  airport:
+    type: http
+    url: *url-airport 
+    interval: *airport-interval
+    path: *proxy-file-path-AirPort
+    health-check:
+      enable: true
+      interval: *airport-interval
+      # lazy: true
+      url: *health-check-url
+
+rules:
+  - DOMAIN-SUFFIX,smtp,DIRECT
+  - DOMAIN-KEYWORD,aria2,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN-SUFFIX,lancache.steamcontent.com,DIRECT
+  - DOMAIN,yacd.haishan.me,🔰国外流量
+  - RULE-SET,OpenAI,🤖OpenAI
+  - RULE-SET,IDM,🔽IDM
+  - RULE-SET,DownLoadClient,DIRECT
+  - RULE-SET,ProxyClient,DIRECT
+  - RULE-SET,AdBlock,REJECT
+  - RULE-SET,Apple,🍎苹果服务
+  - RULE-SET,Adobe,⚓️其他流量
+  - RULE-SET,Amazon,🚚Amazon
+  - RULE-SET,BiliBili,🎬哔哩哔哩
+  - RULE-SET,GitHub,🔰国外流量
+  - RULE-SET,Google,🔰国外流量
+  - RULE-SET,NewBing,🤖NewBing
+  - RULE-SET,OneDrive,☁OneDrive
+  - RULE-SET,Microsoft,💻Microsoft
+  - RULE-SET,Netflix,🎬Netflix 
+  - RULE-SET,DisneyPlus,🎬DisneyPlus 
+  - RULE-SET,Hulu,🎬Hulu
+  - RULE-SET,HBO,🎬HBO
+  - RULE-SET,TikTok,🎬TikTok
+  - RULE-SET,Speedtest,📡Speedtest
+  - RULE-SET,Steam,🎮Steam
+  - RULE-SET,Netch,🎮Netch
+  - RULE-SET,Spotify,🎧Spotify
+  - RULE-SET,Telegram,✈️Telegram 
+  - RULE-SET,Twitter,🔰国外流量 
+  - RULE-SET,Tencent,🚀直接连接
+  - RULE-SET,YouTube,🎬Youtube 
+  - RULE-SET,PayPal,🧧Paypal
+  - RULE-SET,Discord,🎙Discord
+  - RULE-SET,Facebook,📘Facebook 
+  - RULE-SET,Proxy,🔰国外流量
+  - RULE-SET,Direct,DIRECT
+  - DOMAIN-SUFFIX,live.cn,🚀直接连接
+
+  - GEOIP,CN,DIRECT
+  - MATCH,⚓️其他流量
+
+rule-providers:
+  AdBlock: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-AdBlock
+    url: *rule-provider-url-AdBlock
+    interval: *rule-interval
+  Apple: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Apple
+    url: *rule-provider-url-Apple
+    interval: *rule-interval
+  Adobe: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Adobe
+    url: *rule-provider-url-Adobe
+    interval: *rule-interval
+  Amazon: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Amazon
+    url: *rule-provider-url-Amazon
+    interval: *rule-interval
+  China: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-China
+    url: *rule-provider-url-China
+    interval: *rule-interval
+  BiliBili: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-BiliBili
+    url: *rule-provider-url-BiliBili
+    interval: *rule-interval
+  Facebook: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Facebook
+    url: *rule-provider-url-Facebook
+    interval: *rule-interval
+  GitHub: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-GitHub
+    url: *rule-provider-url-GitHub
+    interval: *rule-interval
+  Google: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Google
+    url: *rule-provider-url-Google
+    interval: *rule-interval
+  Microsoft: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Microsoft
+    url: *rule-provider-url-Microsoft
+    interval: *rule-interval
+  OneDrive: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-OneDrive
+    url: *rule-provider-url-OneDrive
+    interval: *rule-interval
+  OpenAI: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-OpenAI
+    url: *rule-provider-url-OpenAI
+    interval: *rule-interval
+  NewBing: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-NewBing
+    url: *rule-provider-url-NewBing
+    interval: *rule-interval
+  Netflix: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Netflix
+    url: *rule-provider-url-Netflix
+    interval: *rule-interval
+  Netch: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Netch
+    url: *rule-provider-url-Netch
+    interval: *rule-interval
+  Spotify: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Spotify
+    url: *rule-provider-url-Spotify
+    interval: *rule-interval
+  Speedtest: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Speedtest
+    url: *rule-provider-url-Speedtest
+    interval: *rule-interval
+  Steam: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Steam
+    url: *rule-provider-url-Steam
+    interval: *rule-interval
+  Telegram: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Telegram
+    url: *rule-provider-url-Telegram
+    interval: *rule-interval
+  Twitter: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Twitter
+    url: *rule-provider-url-Twitter
+    interval: *rule-interval
+  Tencent: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Tencent
+    url: *rule-provider-url-Tencent
+    interval: *rule-interval
+  YouTube: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-YouTube
+    url: *rule-provider-url-YouTube
+    interval: *rule-interval
+  TikTok: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-TikTok
+    url: *rule-provider-url-TikTok 
+    interval: *rule-interval
+  PayPal: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-PayPal
+    url: *rule-provider-url-PayPal 
+    interval: *rule-interval
+  Discord: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Discord
+    url: *rule-provider-url-Discord 
+    interval: *rule-interval
+  Proxy: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Proxy
+    url: *rule-provider-url-Proxy 
+    interval: *rule-interval
+  ProxyClient: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-ProxyClient
+    url: *rule-provider-url-ProxyClient 
+    interval: *rule-interval
+  DisneyPlus: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-DisneyPlus
+    url: *rule-provider-url-DisneyPlus 
+    interval: *rule-interval
+  Hulu: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Hulu
+    url: *rule-provider-url-Hulu 
+    interval: *rule-interval
+  HBO: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-HBO
+    url: *rule-provider-url-HBO
+    interval: *rule-interval
+  Direct: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Direct
+    url: *rule-provider-url-Direct
+    interval: *rule-interval
+  DownLoadClient: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-DownLoadClient
+    url: *rule-provider-url-DownLoadClient
+    interval: *rule-interval
+  IDM: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-IDM
+    url: *rule-provider-url-IDM
+    interval: *rule-interval
