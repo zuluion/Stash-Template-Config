@@ -20,6 +20,8 @@ BASE-DATA:
       - 🇫🇷 AIRPORT-FR
       - 🇦🇺 AIRPORT-AU
       - AIRPORT
+      - WARP+
+      - ProxyChain
     proxies-all-fdirect: &proxies-all-fdirect
       - 🚀直接连接
       - 🔰国外流量
@@ -37,6 +39,8 @@ BASE-DATA:
       - 🇫🇷 AIRPORT-FR
       - 🇦🇺 AIRPORT-AU
       - AIRPORT
+      - WARP+
+      - ProxyChain
     proxies-all-oforeign: &proxies-all-oforeign
       - 🇭🇰 AIRPORT-HK
       - 🇨🇳 AIRPORT-TW
@@ -52,6 +56,32 @@ BASE-DATA:
       - 🇫🇷 AIRPORT-FR
       - 🇦🇺 AIRPORT-AU
       - AIRPORT
+      - WARP+
+      - ProxyChain
+    proxies-all-for-proxychain: &proxies-all-for-proxychain
+      - 🇭🇰 AIRPORT-HK
+      - 🇨🇳 AIRPORT-TW
+      - 🇸🇬 AIRPORT-SG
+      - 🇯🇵 AIRPORT-JP
+      - 🇰🇷 AIRPORT-Korea
+      - 🇺🇸 AIRPORT-US
+      - 🇮🇳 AIRPORT-India
+      - 🇬🇧 AIRPORT-EN
+      - 🇮🇪 AIRPORT-Ireland
+      - 🇷🇺 AIRPORT-RU
+      - 🇨🇦 AIRPORT-Canada
+      - 🇫🇷 AIRPORT-FR
+      - 🇦🇺 AIRPORT-AU
+      - AIRPORT
+      - Add-ON
+      - 🇹🇷 Add-ON-TR
+      - 🇦🇷 Add-ON-AGT
+      - 🇧🇷 Add-ON-BR
+      - 🇲🇾 Add-ON-Malaysia
+      - 🇺🇦 Add-ON-UA
+      - 🇻🇳 Add-ON-VN
+      - 🇿🇦 Add-ON-ZA
+      - WARP+  
     proxies-all-for-tiktok: &proxies-all-for-tiktok
       - 🇺🇸 AIRPORT-US
       - 🔰国外流量
@@ -83,10 +113,16 @@ BASE-DATA:
   proxy-providers-config:
     proxy-providers-use: &proxy-providers-use 
       - airport
+      # - warp
+      # - local
     proxy-providers-common:
       airport-interval: &airport-interval 36000
       url-airport: &url-airport "http://sub.store/download/这里修改成自己的机场链接或者将这里的汉字修改成本地Sub-Store的订阅名称" # 这里填入机场链接
       proxy-file-path-AirPort: &proxy-file-path-AirPort myprovider/proxies/provider-airport.yml
+      url-warp: &url-warp "" # 这里填入直接托管的WARP配置
+      proxy-file-path-warp: &proxy-file-path-warp myprovider/proxies/provider-warp.yml
+      url-local: &url-local "" # 这里填入直接托管的本地代理配置
+      proxy-file-path-local: &proxy-file-path-local myprovider/proxies/provider-local.yml
     proxy-providers-filter:
       proxy-filter-HK: &proxy-filter-HK '港|HK|HongKong'
       proxy-filter-TW: &proxy-filter-TW '台湾|TW|Taiwan'
@@ -106,6 +142,10 @@ BASE-DATA:
       proxy-filter-AGT: &proxy-filter-AGT '阿根廷|AR|Argentina'
       proxy-filter-PLP: &proxy-filter-PLP '菲律宾|PH|Philippines'
       proxy-filter-Malaysia: &proxy-filter-Malaysia '马来西亚|MY|Malaysia'
+      proxy-filter-BR: &proxy-filter-BR '巴西|BR|Brazil'
+      proxy-filter-UA: &proxy-filter-UA '乌克兰|UA|Ukraine'
+      proxy-filter-VN: &proxy-filter-VN '越南|VN|Vietnam'
+      proxy-filter-ZA: &proxy-filter-ZA '南非|ZA|South Africa'
       proxy-filter-special-streaming-media: &proxy-filter-special-streaming-media '港|HK|HongKong|台湾|TW|Taiwan|新加坡|SG|Singapore|日本|JP|Japan|韩国|KR|Korean|美国|US|United States|America'
   
   rule-providers-config:
@@ -154,6 +194,9 @@ BASE-DATA:
       OneDrive:
         rule-file-path-OneDrive: &rule-file-path-OneDrive myprovider/ruleset/OneDrive.yaml
         rule-provider-url-OneDrive: &rule-provider-url-OneDrive https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/OneDrive.yaml
+      OutLook:
+        rule-file-path-OutLook: &rule-file-path-OutLook myprovider/ruleset/OutLook.yaml
+        rule-provider-url-OutLook: &rule-provider-url-OutLook https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/OutLook.yaml
       OpenAI:
         rule-file-path-OpenAI: &rule-file-path-OpenAI myprovider/ruleset/OpenAI.yaml
         rule-provider-url-OpenAI: &rule-provider-url-OpenAI https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/OpenAI.yaml
@@ -253,9 +296,13 @@ BASE-DATA:
     icon-Argentina: &icon-Argentina https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Argentina.png
     icon-Philippines: &icon-Philippines https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Philippines.png
     icon-Malaysia: &icon-Malaysia https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Malaysia.png
+    icon-Brazil: &icon-Brazil https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Brazil.png
     icon-Bot: &icon-Bot https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Bot.png
     icon-OneDrive: &icon-OneDrive https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/OneDrive.png
     icon-Game: &icon-Game https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Game.png
+    icon-Cloudflare: &icon-Cloudflare https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Cloudflare.png
+    icon-Proxy: &icon-Proxy https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Proxy.png
+    icon-Mail: &icon-Mail https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Mail.png
 
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -269,7 +316,162 @@ mode: rule
 log-level: silent
 ipv6: false
 external-controller: '0.0.0.0:9090'
+# DNS 服务器配置(可选；若不配置，程序内置的 DNS 服务会被关闭)
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: true # 当此选项为 false 时, AAAA 请求将返回空
+  # 以下填写的 DNS 服务器将会被用来解析 DNS 服务的域名
+  # 仅填写 DNS 服务器的 IP 地址
+  default-nameserver:
+    - 114.114.114.114
+    - 223.5.5.5
+    - 8.8.8.8
+  enhanced-mode: fake-ip # 或 redir-host
+  fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 (CIDR 形式)
+  # use-hosts: true # 查询 hosts 并返回 IP 记录
+  # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
+  fake-ip-filter:
+    # 以下域名列表参考自 vernesong/OpenClash 项目，并由 Hackl0us 整理补充
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    - 'time.*.com'
+    - 'time.*.gov'
+    - 'time.*.edu.cn'
+    - 'time.*.apple.com'
+    - 'time1.*.com'
+    - 'time2.*.com'
+    - 'time3.*.com'
+    - 'time4.*.com'
+    - 'time5.*.com'
+    - 'time6.*.com'
+    - 'time7.*.com'
+    - 'ntp.*.com'
+    - 'ntp1.*.com'
+    - 'ntp2.*.com'
+    - 'ntp3.*.com'
+    - 'ntp4.*.com'
+    - 'ntp5.*.com'
+    - 'ntp6.*.com'
+    - 'ntp7.*.com'
+    - '*.time.edu.cn'
+    - '*.ntp.org.cn'
+    - '+.pool.ntp.org'
+    - 'time1.cloud.tencent.com'
+    - 'music.163.com'
+    - '*.music.163.com'
+    - '*.126.net'
+    - 'musicapi.taihe.com'
+    - 'music.taihe.com'
+    - 'songsearch.kugou.com'
+    - 'trackercdn.kugou.com'
+    - '*.kuwo.cn'
+    - 'api-jooxtt.sanook.com'
+    - 'api.joox.com'
+    - 'joox.com'
+    - 'y.qq.com'
+    - '*.y.qq.com'
+    - 'streamoc.music.tc.qq.com'
+    - 'mobileoc.music.tc.qq.com'
+    - 'isure.stream.qqmusic.qq.com'
+    - 'dl.stream.qqmusic.qq.com'
+    - 'aqqmusic.tc.qq.com'
+    - 'amobile.music.tc.qq.com'
+    - '*.xiami.com'
+    - '*.music.migu.cn'
+    - 'music.migu.cn'
+    - '*.msftconnecttest.com'
+    - '*.msftncsi.com'
+    - 'msftconnecttest.com'
+    - 'msftncsi.com'
+    - 'localhost.ptlogin2.qq.com'
+    - 'localhost.sec.qq.com'
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.microsoft.com'
+    - '*.*.xboxlive.com'
+    - '+.battlenet.com.cn'
+    - '+.wotgame.cn'
+    - '+.wggames.cn'
+    - '+.wowsgame.cn'
+    - '+.wargaming.net'
+    - 'proxy.golang.org'
+    - 'stun.*.*'
+    - 'stun.*.*.*'
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+    - '+.stun.*.*.*.*'
+    - 'heartbeat.belkin.com'
+    - '*.linksys.com'
+    - '*.linksyssmartwifi.com'
+    - '*.router.asus.com'
+    - 'mesu.apple.com'
+    - 'swscan.apple.com'
+    - 'swquery.apple.com'
+    - 'swdownload.apple.com'
+    - 'swcdn.apple.com'
+    - 'swdist.apple.com'
+    - 'lens.l.google.com'
+    - 'stun.l.google.com'
+    - '+.nflxvideo.net'
+    - '*.square-enix.com'
+    - '*.finalfantasyxiv.com'
+    - '*.ffxiv.com'
+    - '*.mcdn.bilivideo.cn'
+    - WORKGROUP
+  # 支持 UDP / TCP / DoT / DoH 协议的 DNS 服务，可以指明具体的连接端口号。
+  # 所有 DNS 请求将会直接发送到服务器，不经过任何代理。
+  # Clash 会使用最先获得的解析记录回复 DNS 请求
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  # 当 fallback 参数被配置时, DNS 请求将同时发送至上方 nameserver 列表和下方 fallback 列表中配置的所有 DNS 服务器.
+  # 当解析得到的 IP 地址的地理位置不是 CN 时，clash 将会选用 fallback 中 DNS 服务器的解析结果。
+  # fallback:
+  #   - https://dns.google/dns-query
+  # 如果使用 nameserver 列表中的服务器解析的 IP 地址在下方列表中的子网中，则它们被认为是无效的，
+  # Clash 会选用 fallback 列表中配置 DNS 服务器解析得到的结果。
+  #
+  # 当 fallback-filter.geoip 为 true 且 IP 地址的地理位置为 CN 时，
+  # Clash 会选用 nameserver 列表中配置 DNS 服务器解析得到的结果。
 
+  #
+  # 当 fallback-filter.geoip 为 false, 如果解析结果不在 fallback-filter.ipcidr 范围内，
+  # Clash 总会选用 nameserver 列表中配置 DNS 服务器解析得到的结果。
+  #
+  # 采取以上逻辑进行域名解析是为了对抗 DNS 投毒攻击。
+
+  fallback-filter:
+    geoip: false
+    ipcidr:
+      - 0.0.0.0/8
+      - 10.0.0.0/8
+      - 100.64.0.0/10
+      - 127.0.0.0/8
+      - 169.254.0.0/16
+      - 172.16.0.0/12
+      - 192.0.0.0/24
+      - 192.0.2.0/24
+      - 192.88.99.0/24
+      - 192.168.0.0/16
+      - 198.18.0.0/15
+      - 198.51.100.0/24
+      - 203.0.113.0/24
+      - 224.0.0.0/4
+      - 240.0.0.0/4
+      - 255.255.255.255/32
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+      - '+.githubusercontent.com'
+      - '+.googlevideo.com'
 profile:
   store-selected: false
   tracing: true
@@ -279,6 +481,45 @@ proxies:
 proxy-groups:
   # relay chains the proxies. proxies shall not contain a relay. No UDP support.
   # Traffic: clash <-> http <-> vmess <-> ss1 <-> ss2 <-> Internet
+  # -
+  #   name: Local-Proxy
+  #   icon: *icon-Proxy
+  #   type: fallback
+  #   url: *health-check-url
+  #   interval: 300
+  #   filter: *proxy-filter-Local
+  #   use:
+  #     - local
+  # -
+  #   name: 🔰国外流量
+  #   icon: *icon-Area
+  #   type: url-test
+  #   url: *health-check-url
+  #   interval: 300
+  #   proxies:
+  #     - Local-Proxy
+  #     - 🔰国外流量-BASE
+  # -
+  #   name: ⚓️其他流量
+  #   icon: *icon-Final
+  #   type: url-test
+  #   url: *health-check-url
+  #   interval: 300
+  #   proxies:
+  #     - Local-Proxy
+  #     - ⚓️其他流量-BASE
+  # -
+  #   name: 🔰国外流量-BASE
+  #   icon: *icon-Area
+  #   type: select
+  #   proxies:
+  #     *proxies-all-oforeign    
+  # -
+  #   name: ⚓️其他流量-BASE
+  #   icon: *icon-Final
+  #   type: select
+  #   proxies:
+  #     *proxies-all
   -
     name: 🔰国外流量
     icon: *icon-Area
@@ -314,7 +555,7 @@ proxy-groups:
     icon: *icon-Bot
     type: select
     proxies:
-      *proxies-all
+      *proxies-all-for-openai
   -
     name: 🎬Youtube
     icon: *icon-YouTube
@@ -401,6 +642,12 @@ proxy-groups:
     type: select
     proxies:
       *proxies-all-fdirect
+  -
+    name: 📧OutLook
+    icon: *icon-Mail
+    type: select
+    proxies:
+      *proxies-all
   -
     name: 🤖NewBing
     icon: *icon-Bot
@@ -527,6 +774,32 @@ proxy-groups:
     type: select
     filter: *proxy-filter-AU
     include-all: true
+  -
+    name: WARP+
+    icon: *icon-Cloudflare
+    type: select
+    filter: *proxy-filter-WARP
+    use: *proxy-providers-use
+  -
+    name: ProxyChain_Start
+    icon: *icon-Proxy
+    type: select
+    proxies:
+      *proxies-all-for-proxychain
+  -
+    name: ProxyChain_Landing
+    icon: *icon-Proxy
+    type: select
+    proxies:
+      *proxies-all-for-proxychain
+  - 
+    name: ProxyChain
+    icon: *icon-Proxy
+    type: relay
+    # disable-udp: true
+    proxies:
+      - ProxyChain_Start
+      - ProxyChain_Landing
 
 proxy-providers:
   airport:
@@ -539,6 +812,26 @@ proxy-providers:
       interval: *airport-interval
       # lazy: true
       url: *health-check-url
+  # warp:
+  #   type: http
+  #   url: *url-warp 
+  #   interval: *airport-interval
+  #   path: *proxy-file-path-warp
+  #   health-check:
+  #     enable: true
+  #     interval: *airport-interval
+  #     # lazy: true
+  #     url: *health-check-url
+  # local:
+  #   type: http
+  #   url: *url-local 
+  #   interval: *airport-interval
+  #   path: *proxy-file-path-local
+  #   health-check:
+  #     enable: true
+  #     interval: *airport-interval
+  #     # lazy: true
+  #     url: *health-check-url
 
 rules:
   - DOMAIN-SUFFIX,smtp,DIRECT
@@ -559,6 +852,7 @@ rules:
   - RULE-SET,Google,🔰国外流量
   - RULE-SET,NewBing,🤖NewBing
   - RULE-SET,OneDrive,☁OneDrive
+  - RULE-SET,OutLook,📧OutLook
   - RULE-SET,Microsoft,💻Microsoft
   - RULE-SET,Netflix,🎬Netflix 
   - RULE-SET,DisneyPlus,🎬DisneyPlus 
@@ -649,6 +943,12 @@ rule-providers:
     behavior: classical
     path: *rule-file-path-OneDrive
     url: *rule-provider-url-OneDrive
+    interval: *rule-interval
+  OutLook: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-OutLook
+    url: *rule-provider-url-OutLook
     interval: *rule-interval
   OpenAI: 
     type: http
