@@ -73,14 +73,6 @@ BASE-DATA:
       - 🇫🇷 AIRPORT-FR
       - 🇦🇺 AIRPORT-AU
       - AIRPORT
-      - Add-ON
-      - 🇹🇷 Add-ON-TR
-      - 🇦🇷 Add-ON-AGT
-      - 🇧🇷 Add-ON-BR
-      - 🇲🇾 Add-ON-Malaysia
-      - 🇺🇦 Add-ON-UA
-      - 🇻🇳 Add-ON-VN
-      - 🇿🇦 Add-ON-ZA
       - WARP+  
     proxies-all-for-tiktok: &proxies-all-for-tiktok
       - 🇺🇸 AIRPORT-US
@@ -124,6 +116,8 @@ BASE-DATA:
       url-local: &url-local "" # 这里填入直接托管的本地代理配置
       proxy-file-path-local: &proxy-file-path-local myprovider/proxies/provider-local.yml
     proxy-providers-filter:
+      proxy-filter-Local: &proxy-filter-Local ''
+      proxy-filter-WARP: &proxy-filter-WARP 'WARP+'
       proxy-filter-HK: &proxy-filter-HK '港|HK|HongKong'
       proxy-filter-TW: &proxy-filter-TW '台湾|TW|Taiwan'
       proxy-filter-SG: &proxy-filter-SG '新加坡|SG|Singapore'
