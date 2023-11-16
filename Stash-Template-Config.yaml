@@ -101,7 +101,7 @@ BASE-DATA:
       - 🇫🇷 AIRPORT-FR
       - 🇦🇺 AIRPORT-AU
       - AIRPORT
-  
+
   proxy-providers-config:
     proxy-providers-use: &proxy-providers-use 
       - airport
@@ -136,11 +136,11 @@ BASE-DATA:
       proxy-filter-AGT: &proxy-filter-AGT '阿根廷|AR|Argentina'
       proxy-filter-PLP: &proxy-filter-PLP '菲律宾|PH|Philippines'
       proxy-filter-Malaysia: &proxy-filter-Malaysia '马来西亚|MY|Malaysia'
+      proxy-filter-special-streaming-media: &proxy-filter-special-streaming-media '港|HK|HongKong|台湾|TW|Taiwan|新加坡|SG|Singapore|日本|JP|Japan|韩国|KR|Korean|美国|US|United States|America'
       proxy-filter-BR: &proxy-filter-BR '巴西|BR|Brazil'
       proxy-filter-UA: &proxy-filter-UA '乌克兰|UA|Ukraine'
       proxy-filter-VN: &proxy-filter-VN '越南|VN|Vietnam'
       proxy-filter-ZA: &proxy-filter-ZA '南非|ZA|South Africa'
-      proxy-filter-special-streaming-media: &proxy-filter-special-streaming-media '港|HK|HongKong|台湾|TW|Taiwan|新加坡|SG|Singapore|日本|JP|Japan|韩国|KR|Korean|美国|US|United States|America'
   
   rule-providers-config:
     rule-providers-common:
@@ -203,6 +203,9 @@ BASE-DATA:
       Steam:
         rule-file-path-Steam: &rule-file-path-Steam myprovider/ruleset/Steam.yaml
         rule-provider-url-Steam: &rule-provider-url-Steam https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Steam.yaml
+      Ubisoft:
+        rule-file-path-Ubisoft: &rule-file-path-Ubisoft myprovider/ruleset/Ubisoft.yaml
+        rule-provider-url-Ubisoft: &rule-provider-url-Ubisoft https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Ubisoft.yaml
       Telegram:
         rule-file-path-Telegram: &rule-file-path-Telegram myprovider/ruleset/Telegram.yaml
         rule-provider-url-Telegram: &rule-provider-url-Telegram https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Telegram.yaml
@@ -247,7 +250,7 @@ BASE-DATA:
         rule-provider-url-DownLoadClient: &rule-provider-url-DownLoadClient https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/DownLoadClient.yaml
       IDM:
         rule-file-path-IDM: &rule-file-path-IDM myprovider/ruleset/IDM.yaml
-        rule-provider-url-IDM: &rule-provider-url-IDM https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/IDM.yaml
+        rule-provider-url-IDM: &rule-provider-url-IDM https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/IDM.yaml 
 
   icon-providers-config:
     icon-Area: &icon-Area https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Area.png
@@ -297,7 +300,6 @@ BASE-DATA:
     icon-Cloudflare: &icon-Cloudflare https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Cloudflare.png
     icon-Proxy: &icon-Proxy https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Proxy.png
     icon-Mail: &icon-Mail https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Mail.png
-
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -310,11 +312,13 @@ mode: rule
 log-level: silent
 ipv6: false
 external-controller: '0.0.0.0:9090'
+
 # DNS 服务器配置(可选；若不配置，程序内置的 DNS 服务会被关闭)
 dns:
   enable: true
   listen: 0.0.0.0:53
   ipv6: true # 当此选项为 false 时, AAAA 请求将返回空
+
   # 以下填写的 DNS 服务器将会被用来解析 DNS 服务的域名
   # 仅填写 DNS 服务器的 IP 地址
   default-nameserver:
@@ -324,6 +328,7 @@ dns:
   enhanced-mode: fake-ip # 或 redir-host
   fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 (CIDR 形式)
   # use-hosts: true # 查询 hosts 并返回 IP 记录
+
   # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
   fake-ip-filter:
     # 以下域名列表参考自 vernesong/OpenClash 项目，并由 Hackl0us 整理补充
@@ -419,28 +424,29 @@ dns:
     - '*.ffxiv.com'
     - '*.mcdn.bilivideo.cn'
     - WORKGROUP
+
   # 支持 UDP / TCP / DoT / DoH 协议的 DNS 服务，可以指明具体的连接端口号。
   # 所有 DNS 请求将会直接发送到服务器，不经过任何代理。
   # Clash 会使用最先获得的解析记录回复 DNS 请求
   nameserver:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+
   # 当 fallback 参数被配置时, DNS 请求将同时发送至上方 nameserver 列表和下方 fallback 列表中配置的所有 DNS 服务器.
   # 当解析得到的 IP 地址的地理位置不是 CN 时，clash 将会选用 fallback 中 DNS 服务器的解析结果。
   # fallback:
   #   - https://dns.google/dns-query
+
   # 如果使用 nameserver 列表中的服务器解析的 IP 地址在下方列表中的子网中，则它们被认为是无效的，
   # Clash 会选用 fallback 列表中配置 DNS 服务器解析得到的结果。
   #
   # 当 fallback-filter.geoip 为 true 且 IP 地址的地理位置为 CN 时，
   # Clash 会选用 nameserver 列表中配置 DNS 服务器解析得到的结果。
-
   #
   # 当 fallback-filter.geoip 为 false, 如果解析结果不在 fallback-filter.ipcidr 范围内，
   # Clash 总会选用 nameserver 列表中配置 DNS 服务器解析得到的结果。
   #
   # 采取以上逻辑进行域名解析是为了对抗 DNS 投毒攻击。
-
   fallback-filter:
     geoip: false
     ipcidr:
@@ -466,6 +472,7 @@ dns:
       - '+.youtube.com'
       - '+.githubusercontent.com'
       - '+.googlevideo.com'
+
 profile:
   store-selected: false
   tracing: true
@@ -631,6 +638,11 @@ proxy-groups:
   -
     name: 🎮Steam
     icon: *icon-Steam
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: 🎮Ubisoft
     type: select
     proxies:
       *proxies-all
@@ -871,6 +883,7 @@ rules:
   - RULE-SET,TikTok,🎬TikTok
   - RULE-SET,Speedtest,📡Speedtest
   - RULE-SET,Steam,🎮Steam
+  - RULE-SET,Ubisoft,🎮Ubisoft
   - RULE-SET,Netch,🎮Netch
   - RULE-SET,Spotify,🎧Spotify
   - RULE-SET,Telegram,✈️Telegram 
@@ -1001,6 +1014,12 @@ rule-providers:
     behavior: classical
     path: *rule-file-path-Steam
     url: *rule-provider-url-Steam
+    interval: *rule-interval
+  Ubisoft: 
+    type: http
+    behavior: classical
+    path: *rule-file-path-Ubisoft
+    url: *rule-provider-url-Ubisoft
     interval: *rule-interval
   Telegram: 
     type: http
