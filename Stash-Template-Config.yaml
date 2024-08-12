@@ -518,7 +518,7 @@ proxy-groups:
   #   icon: *icon-Proxy
   #   type: fallback
   #   url: *health-check-url
-  #   interval: 30
+  #   interval: 6
   #   filter: *proxy-filter-Local
   #   use:
   #     - local
