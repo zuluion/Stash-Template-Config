@@ -281,8 +281,8 @@ BASE-DATA:
         rule-provider-url-IDM: &rule-provider-url-IDM https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/IDM.yaml
       PikPak:
         rule-file-path-PikPak: &rule-file-path-PikPak myprovider/ruleset/PikPak.yaml
-        rule-provider-url-PikPak: &rule-provider-url-PikPak https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/PikPak.yaml  
-
+        rule-provider-url-PikPak: &rule-provider-url-PikPak https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/PikPak.yaml
+  
   icon-providers-config:
     icon-Area: &icon-Area https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Area.png
     icon-Final: &icon-Final https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Final.png
@@ -337,6 +337,7 @@ BASE-DATA:
     icon-Claude: &icon-Claude https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Claude.png
     icon-Gemini: &icon-Gemini https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/AI.png
     icon-Ubisoft: &icon-Ubisoft https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Ubisoft.png
+    icon-Auto: &icon-Auto https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Auto.png
 # ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -520,6 +521,40 @@ proxy-groups:
   # relay chains the proxies. proxies shall not contain a relay. No UDP support.
   # Traffic: clash <-> http <-> vmess <-> ss1 <-> ss2 <-> Internet
   # -
+  #   name: Foreign-StrategySwitch
+  #   icon: *icon-Area
+  #   type: select
+  #   proxies:
+  #     - Foreign-AUTO
+  #     - Foreign-SELECT
+  #     - Local-Proxy
+  # -
+  #   name: Other-StrategySwitch
+  #   icon: *icon-Area
+  #   type: select
+  #   proxies:
+  #     - Other-AUTO
+  #     - Other-SELECT
+  #     - Local-Proxy
+  # -
+  #   name: Foreign-AUTO
+  #   icon: *icon-Auto
+  #   type: url-test
+  #   url: *health-check-url
+  #   interval: 30
+  #   proxies:
+  #     - Local-Proxy
+  #     - Foreign-SELECT
+  # -
+  #   name: Other-AUTO
+  #   icon: *icon-Auto
+  #   type: url-test
+  #   url: *health-check-url
+  #   interval: 30
+  #   proxies:
+  #     - Local-Proxy
+  #     - Other-SELECT
+  # -
   #   name: Local-Proxy
   #   icon: *icon-Proxy
   #   type: fallback
@@ -529,47 +564,13 @@ proxy-groups:
   #   use:
   #     - local
   # -
-  #   name: 国外流量-AUTO
-  #   icon: *icon-Area
-  #   type: url-test
-  #   url: *health-check-url
-  #   interval: 30
-  #   proxies:
-  #     - Local-Proxy
-  #     - 国外流量-BASE
-  # -
-  #   name: 其他流量-AUTO
+  #   name: Foreign-SELECT
   #   icon: *icon-Final
-  #   type: url-test
-  #   url: *health-check-url
-  #   interval: 30
-  #   proxies:
-  #     - Local-Proxy
-  #     - 其他流量-BASE
-  # -
-  #   name: 国外流量
-  #   icon: *icon-Area
-  #   type: select
-  #   proxies:
-  #     - 国外流量-AUTO
-  #     - 国外流量-BASE
-  #     - Local-Proxy
-  # -
-  #   name: 其他流量
-  #   icon: *icon-Final
-  #   type: select
-  #   proxies:
-  #     - 其他流量-AUTO
-  #     - 其他流量-BASE
-  #     - Local-Proxy
-  # -
-  #   name: 国外流量-BASE
-  #   icon: *icon-Area
   #   type: select
   #   proxies:
   #     *proxies-all-oforeign    
   # -
-  #   name: 其他流量-BASE
+  #   name: Other-SELECT
   #   icon: *icon-Final
   #   type: select
   #   proxies:
@@ -761,6 +762,7 @@ proxy-groups:
     name: 直接连接
     icon: *icon-Direct
     type: select
+    hidden: true
     proxies:
       - DIRECT
   -
