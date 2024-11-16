@@ -46,3 +46,6 @@
 + [Tencent](https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Tencent.yaml)
 + [TikTok](https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/TikTok.yaml)
 + [YouTube](https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/YouTube.yaml)
+
+# Link
+1. [ProxySoftware-Template-Config](https://github.com/zuluion/ProxySoftware-Template-Config)
