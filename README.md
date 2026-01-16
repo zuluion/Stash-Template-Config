@@ -49,7 +49,7 @@
 + [TikTok](https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/TikTok.yaml)
 + [YouTube](https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/YouTube.yaml)
 
-ps: 弃用了relay,改成dialer,默认 DIRECT,保留策略组，但是在该模板中实际已经不再提供代理链配置，stash中不支持dialer特性，但是仍然支持relay
+> ps: 弃用了relay,改成dialer,默认 DIRECT,保留策略组，但是在该模板中实际已经不再提供代理链配置，stash中不支持dialer特性，但是仍然支持relay
 
 # Link
 1. [ProxySoftware-Template-Config](https://github.com/zuluion/ProxySoftware-Template-Config)
