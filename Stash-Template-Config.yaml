@@ -334,6 +334,9 @@ BASE-DATA:
       IDM:
         rule-file-path-IDM: &rule-file-path-IDM myprovider/ruleset/IDM.yaml
         rule-provider-url-IDM: &rule-provider-url-IDM https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/IDM.yaml
+      Aria2:
+        rule-file-path-Aria2: &rule-file-path-Aria2 myprovider/ruleset/Aria2.yaml
+        rule-provider-url-Aria2: &rule-provider-url-Aria2 https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/Aria2.yaml
       PikPak:
         rule-file-path-PikPak: &rule-file-path-PikPak myprovider/ruleset/PikPak.yaml
         rule-provider-url-PikPak: &rule-provider-url-PikPak https://cdn.jsdelivr.net/gh/zuluion/Clash-Template-Config@master/Filter/PikPak.yaml
@@ -367,6 +370,7 @@ BASE-DATA:
     icon-Speedtest: &icon-Speedtest https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Speedtest.png
     icon-Apple: &icon-Apple https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Apple_1.png
     icon-Download: &icon-Download https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Download.png
+    icon-Aria2: &icon-Aria2 https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Aria2.png
     icon-Direct: &icon-Direct https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Direct.png
     icon-Airport: &icon-Airport https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Airport.png
     icon-Hong_Kong: &icon-Hong_Kong https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Hong_Kong.png
@@ -842,6 +846,13 @@ proxy-groups:
       - 直接连接
       - 国外流量
   -
+    name: Aria2
+    icon: *icon-Aria2
+    type: select
+    proxies:
+      - 直接连接
+      - 国外流量
+  -
     name: 直接连接
     icon: *icon-Direct
     type: select
@@ -1014,6 +1025,7 @@ rules:
   - RULE-SET,Proxy,国外流量
   - RULE-SET,Direct,DIRECT
   - RULE-SET,IDM,IDM
+  - RULE-SET,Aria2,Aria2
   - DOMAIN-SUFFIX,live.cn,直接连接
   - GEOIP,CN,DIRECT
   - MATCH,其他流量
@@ -1247,6 +1259,12 @@ rule-providers:
     behavior: classical
     path: *rule-file-path-IDM
     url: *rule-provider-url-IDM
+    interval: *rule-interval
+  Aria2:
+    type: http
+    behavior: classical
+    path: *rule-file-path-Aria2
+    url: *rule-provider-url-Aria2
     interval: *rule-interval
   PikPak:
     type: http
