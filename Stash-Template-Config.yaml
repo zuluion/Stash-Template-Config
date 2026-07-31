@@ -351,6 +351,7 @@ BASE-DATA:
   icon-providers-config:
     icon-Area: &icon-Area https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Area.png
     icon-Final: &icon-Final https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Final.png
+    icon-Google: &icon-Google https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Google.png
     icon-Telegram: &icon-Telegram https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Telegram.png
     icon-Discord: &icon-Discord https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Discord.png
     icon-Facebook: &icon-Facebook https://cdn.jsdelivr.net/gh/zuluion/Qure/IconSet/Color/Facebook.png
@@ -659,6 +660,12 @@ proxy-groups:
   -
     name: Telegram
     icon: *icon-Telegram
+    type: select
+    proxies:
+      *proxies-all
+  -
+    name: Google
+    icon: *icon-Google
     type: select
     proxies:
       *proxies-all
@@ -997,7 +1004,7 @@ rules:
   - RULE-SET,Amazon,Amazon
   - RULE-SET,Bilibili,Bilibili
   - RULE-SET,GitHub,国外流量
-  - RULE-SET,Google,国外流量
+  - RULE-SET,Google,Google
   - RULE-SET,Copilot,Copilot
   - RULE-SET,OneDrive,OneDrive
   - RULE-SET,OutLook,OutLook
